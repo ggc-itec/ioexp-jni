@@ -49,6 +49,14 @@ JNIEXPORT void JNICALL Java_DGIOUtility_printPortProperties
 
 /*
  * Class:     DGIOUtility
+ * Method:    enablePort
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_DGIOUtility_enablePort
+  (JNIEnv *, jobject, jint);
+
+/*
+ * Class:     DGIOUtility
  * Method:    turnOnLEDs
  * Signature: ()V
  */
@@ -61,6 +69,14 @@ JNIEXPORT void JNICALL Java_DGIOUtility_turnOnLEDs
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_DGIOUtility_turnOffLEDs
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     DGIOUtility
+ * Method:    echoSwitchToLED
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_DGIOUtility_echoSwitchToLED
   (JNIEnv *, jobject);
 
 #ifdef __cplusplus

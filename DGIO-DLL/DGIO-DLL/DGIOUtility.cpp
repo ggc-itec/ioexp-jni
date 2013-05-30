@@ -55,11 +55,8 @@ JNIEXPORT void JNICALL Java_DGIOUtility_printPortProperties(JNIEnv *env, jobject
 	}
 }
 
-JNIEXPORT void JNICALL Java_DGIOUtility_turnOnLEDs(JNIEnv *env, jobject obj)
+JNIEXPORT void JNICALL Java_DGIOUtility_enablePort(JNIEnv *env, jobject obj, jint prt)
 {
-	unsigned long dwLed = 1;
-	int prt = 0;
-
 	/* Enable port with the LEDs, switches, buttons, etc. */
 	
 	// DGIO API Call: DgioEnableEx
@@ -69,11 +66,19 @@ JNIEXPORT void JNICALL Java_DGIOUtility_turnOnLEDs(JNIEnv *env, jobject obj)
 	else {
 		printf("  Unable to enable DGIO port %d\n", prt);
 	}
+}
+
+JNIEXPORT void JNICALL Java_DGIOUtility_turnOnLEDs(JNIEnv *env, jobject obj)
+{
+	unsigned long dwLed = 1;
 
 	dwLed = 65535;
+	//dwLed = 1 << 15;
 	if (!DgioPutData(hif, 0, 0, &dwLed, 4, fFalse)) {
 			printf("  DgioPutData to LEDs failed\n");
 	}
+
+	printf("Turned on LED\n");
 	/*
 	for (ival = 0; ival < 16; ival++) {		
 		// DGIO API Call: DgioPutData
@@ -88,5 +93,35 @@ JNIEXPORT void JNICALL Java_DGIOUtility_turnOnLEDs(JNIEnv *env, jobject obj)
 
 JNIEXPORT void JNICALL Java_DGIOUtility_turnOffLEDs(JNIEnv *env, jobject obj)
 {
+	//unsigned long dwLed = 1 << 2;
+	unsigned long dwLed = 0;
+	if (!DgioPutData(hif, 0, 0, &dwLed, 4, fFalse)) {
+			printf("  DgioPutData to LEDs failed\n");
+	}
+	printf("Turned off LED\n");
+}
 
+
+JNIEXPORT void JNICALL Java_DGIOUtility_echoSwitchToLED(JNIEnv *env, jobject obj) {
+	unsigned long dwSwt;
+	unsigned long dwBtn;
+	unsigned long dwDps;
+	unsigned long dwLed;
+	// DIGO API Call: DgioGetData
+	if (!DgioGetData(hif, 1, 0, &dwSwt, 4, fFalse)) {		// get switches
+		printf("  DgioGetData on switches failed\n");
+	}
+	
+	if (!DgioGetData(hif, 2, 0, &dwBtn, 4, fFalse)) {		// get buttons
+		printf("  DgioGetData on buttons failed\n");
+	}
+	
+	if (!DgioGetData(hif, 3, 0, &dwDps, 4, fFalse)) {		// get slide switches
+		printf("  DgioGetData on dip switch failed\n");
+	}
+	dwLed = dwSwt | (dwBtn << 8) | (dwDps << 12);
+	
+	if (!DgioPutData(hif, 0, 0, &dwLed, 4, fFalse)) {
+		printf("  DgioPutData on LEDs failed\n");
+	}
 }
