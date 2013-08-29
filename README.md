@@ -26,6 +26,8 @@ This will create a [header file](https://github.com/ggc-itec/ioexp-jni/blob/mast
 
 
 ###Creating DLL in Visual Studio
+Using the wizard, create a `Win32` project and select `DLL` as its application type. 
+
 Once the header file is generate using `javah`, the next step is to include this header file in your Visual Studio project. 
 On the **Solutions Tab**, right click on the **Included Files** folder and add the generated header file as an existing item.
 
