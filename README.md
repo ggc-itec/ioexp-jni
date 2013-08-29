@@ -47,6 +47,8 @@ Specifically, they would be the following:
 
 ![Visual Studio Directories](https://raw.github.com/ggc-itec/ioexp-jni/master/images/vs-properties.png)
 
+Under the properties page, go to Linker -> Input -> Additional Depedencies, and add the relevant .lib files.
+
 The implemented cpp file is shown [here](https://github.com/ggc-itec/ioexp-jni/blob/master/DGIO-DLL/DGIO-DLL/DGIOUtility.cpp). Build the solution and the **DLL** will be generated.
 
 ###Using the DLL
