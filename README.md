@@ -28,14 +28,15 @@ This will create a [header file](https://github.com/ggc-itec/ioexp-jni/blob/mast
 ###Creating DLL in Visual Studio
 Using the wizard, create a `Win32` project and select `DLL` as its application type. 
 
-Once the header file is generate using `javah`, the next step is to include this header file in your Visual Studio project. 
+Once the header file is generated using `javah`, the next step is to include this header file in your Visual Studio project. 
 On the **Solutions Tab**, right click on the **Included Files** folder and add the generated header file as an existing item.
 
-Under **Project Properties**, you should see **VC++ Directories**. Add the **Include** and **Library** directories to the project:
+You must also include header files located on other directories. Under **Project Properties**, you should see **VC++ Directories**. Go ahead and add the **Include** directories and **Library** directories to the project. 
+Specifically, they would be the following:
 
 **Include Directories**
-* Inlcude folder from your JDK installation 
-* win32 folder from  your JDK installation
+* `include` folder from your JDK installation. In Windows, this looks like the following: **C:/Program Files/Java/jdk1.7.0/include/**  
+* `win32` folder from  your JDK installation. In Windows, this looks like the following: **C:/Program Files/Java/jdk1.7.0/include/win32**
 * The folder that contains the generated header file from `javah`
 * Header from from the **Digilent ADEPT SDK**
 
