@@ -35,8 +35,10 @@ You must also include header files located on other directories. Under **Project
 Specifically, they would be the following:
 
 **Include Directories**
-* `include` folder from your JDK installation. In Windows, this looks like the following: **C:/Program Files/Java/jdk1.7.0/include/**  
-* `win32` folder from  your JDK installation. In Windows, this looks like the following: **C:/Program Files/Java/jdk1.7.0/include/win32**
+* `include` folder from your JDK installation. In Windows, this looks like the following:  
+**C:/Program Files/Java/jdk1.7.0/include/**  
+* `win32` folder from  your JDK installation. In Windows, this looks like the following:  
+**C:/Program Files/Java/jdk1.7.0/include/win32**
 * The folder that contains the generated header file from `javah`
 * Header from from the **Digilent ADEPT SDK**
 
