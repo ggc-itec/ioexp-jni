@@ -52,4 +52,20 @@ Under the properties page, go to Linker -> Input -> Additional Depedencies, and 
 The implemented cpp file is shown [here](https://github.com/ggc-itec/ioexp-jni/blob/master/DGIO-DLL/DGIO-DLL/DGIOUtility.cpp). Build the solution and the **DLL** will be generated.
 
 ###Using the DLL
+Since the DLL was compiled with Visual Studio 2010, the [Visual Studio 2010 Redistributable package](http://www.microsoft.com/en-us/download/details.aspx?id=5555) needs to be installed. 
+
+You can load the DLL in your Java file in the following ways:
+
+```
+// if the DLL file is specified in the path
+System.loadLibrary("DGIOUtility")
+
+```
+or
+
+```
+// for an absolute path 
+System.load("C:\\User\\Files\\DGIOUtility.dll");
+
+```
 
